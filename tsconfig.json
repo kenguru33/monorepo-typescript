@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    // tsconfig.json
+    // Mandontary to support Project reference
+    // This will give incremental builds
+    // Further information: https://www.typescriptlang.org/docs/handbook/project-references.html
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "target": "es6",
+    "module": "commonjs",
+    "lib": ["es6"],
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
