@@ -190,7 +190,7 @@ import App from './App'
 ReactDOM.render(React.createElement(App), document.getElementById('root'))
 
 ```
-You are now reade to build the whole monorepo in one go. You can do that with the help of lerna.
+To build the whole monorepo in one go, you can do that with the use of lerna.
 ```bash
 lerna run build
 ````
