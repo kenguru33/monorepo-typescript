@@ -1,3 +1,141 @@
+# MonoRepo Starter
+## How it is built
+
+### Setup project root structure
+Create project folder and initialize lerna
+```bash
+mkdir monorepo-starter
+cd monorepo-starter
+lerna init
+```
+Set lerna to bootstrap with hoisting by default by adding this to __lerna.json__
+```json
+// lerna.json
+
+"command": {
+    "bootstrap": {
+      "hoist": true
+    }
+},
+```
+### Setup Typescript
+Install typescript compiler:
+```bash
+npm i -D typescript
+```
+
+Create base setup used across all packages by creating a tsconfig.json at root of the project.
+
+```json
+// tsconfig.json
+
+// Mandontary to support Project reference
+// This will give incremental builds
+// Further information: https://www.typescriptlang.org/docs/handbook/project-references.html
+
+"composite": true,
+"declaration": true,
+"declarationMap": true,
+
+"sourceMap": true,
+"target": "es6",                          
+"module": "commonjs",
+"strict": true,
+"esModuleInterop": true,
+"forceConsistentCasingInFileNames": true
+```
+
+
+
+### Create packages
+
+Create package folder where all the packages lives:
+```bash
+mkir packages
+cd packages
+```
+Then create first package. Let this be e.g. a shared package.
+```bash
+mkdir shared
+cd shared
+npm init -y
+mkdir src
+touch src/index.ts
+```
+Add this to src/index.ts
+```javascript
+export const logger = (msg: string) => {
+  console.log(msg)
+}
+```
+
+Edit the package.json file
+```json
+  // ...
+  "main": "./dist/index.js",
+  // ...
+  "scripts": {
+    // ...
+    "build": "tsc -b .",
+    // ...
+  }
+  // ...
+```
+Create a local tsconfig.json file that extends the base tsconfig.json file we create at root of the project.
+```json
+{
+  "compilerOptions" {
+    "extends": "../../tsconfig.json",
+    "outDir": "./dist",
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
+```
+
+Then create a package named __app__ that reference the first package, __shared__.
+```bash
+cd ..
+mkdir app
+cd app
+npm init -y
+mkdir src
+touch src/index.ts
+```
+Add this to src/index.ts file:
+```javascript
+import {logger} from 'shared'
+
+logger('Hello World!')
+```
+Edit the package.json file
+```json
+  "main": "./dist/index.js"
+```
+
+Create local tsconfig.json file that extends the base tsconfig.json file we created at root of the project and setup a reference to the __shared__ package. This is needed to get the correct build order as this package depends on ui-components. It will also only trigger a new build upon changes. (incremental build)
+```json
+  {
+  "extends": "../../tsconfig.json",
+  "compilerOptions" {
+    "outDir": "./dist",
+  },
+  "references": [{
+    "path": "../shared"
+  }],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
+```
+Then you need the bootstrap all the packages in the mono repo
+```bash
+lerna bootstrap
+```
+---
 ## Add React
 ### Create a ui component library package
 Create a shared ui componenr library that can be used across the monorepo packages.
