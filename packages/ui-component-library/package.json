@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc -b tsconfig.json",
     "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
-    "build": "npm run clean && npm run compile",
-    "start": "npm run compile"
+    "build": "npm run clean && webpack"
   },
   "keywords": [],
   "author": "Bernt Anker",
@@ -17,6 +16,11 @@
     "react": "^16.12.0"
   },
   "devDependencies": {
-    "@types/react": "^16.9.19"
+    "@types/react": "^16.9.19",
+    "css-loader": "^3.4.2",
+    "ts-loader": "^6.2.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2"
   }
 }
