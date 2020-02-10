@@ -336,3 +336,37 @@ You are now ready to give the application a spin :)
 ```bash
 lerna run start
 ```
+## Add postcss and tailwind
+To be able to style component with tailwind we need to setup parcel with postcss
+
+We will need 2 modules installed, autoprefixer and postcss-modules
+
+Install with lerna as a develop depency and scoped to ui-app package
+```bash
+lerna add autoprefixer --dev scope=ui-app
+lerna add postcss-modules --dev --scope=ui-app 
+```
+Then, create a postcss.config.js:
+```bash
+{
+  "plugins": {
+    "autoprefixer": true
+  }
+}
+```
+add tailwindcss as a develop dependency:
+```bash
+lerna add tailwindcss --dev --scope=ui-app
+```
+Create index.css:
+```css
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+```
+Then add style.css in the head tag in index.html file:
+```html
+<link rel="stylesheet" href="styles.css">
+```
