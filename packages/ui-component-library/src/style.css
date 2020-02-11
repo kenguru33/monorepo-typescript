@@ -1,0 +1,26 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+button {
+  outline: none !important;
+}
+
+.ripple {
+  @apply bg-orange-600;
+  background-position: center;
+  transition: background 0.8s;
+}
+
+.ripple:hover {
+  background: #DD8310 radial-gradient(circle, transparent 1%, #DD9310 1%) center/15000%;
+}
+
+.ripple:active {
+  background-color: #DD6B10;
+  background-size: 100%;
+  transition: background 0s;
+}
