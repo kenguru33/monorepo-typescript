@@ -1,3 +1,2 @@
 import {logger} from 'shared'
-
-logger('Hello World!')
+logger('Hello from backend!')

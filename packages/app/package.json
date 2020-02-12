@@ -8,12 +8,15 @@
     "compile": "tsc -b tsconfig.json",
     "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
     "build": "npm run clean && npm run compile",
-    "start": "npm run compile && node dist/index.js"
+    "start": "nodemon -e ts,js ./node_module/**/*.js --exec \"npm run compile && node ./dist/index.js\""
   },
   "keywords": [],
   "author": "Bernt Anker",
   "license": "ISC",
   "dependencies": {
     "shared": "1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }

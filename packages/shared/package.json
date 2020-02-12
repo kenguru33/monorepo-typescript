@@ -8,7 +8,7 @@
     "compile": "tsc -b tsconfig.json",
     "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
     "build": "npm run clean && npm run compile",
-    "start": "npm run compile"
+    "start": "tsc -w"
   },
   "keywords": [],
   "author": "Bernt Anker",
