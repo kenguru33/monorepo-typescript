@@ -2,12 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
 module.exports = {
   mode: 'development',
-  devtool: {
-    overlay: {
-      warnings: true,
-      errors: true
-    }
-  },
+  devtool: 'source-map',
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),

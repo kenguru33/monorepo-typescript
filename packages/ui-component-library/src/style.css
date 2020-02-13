@@ -10,7 +10,6 @@ button {
 }
 
 .ripple {
-  @apply bg-orange-600;
   background-position: center;
   transition: background 0.8s;
 }

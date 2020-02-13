@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { Children } from 'react'
 import '../style.css'
 
-export const Button = () => (<button className="ripple text-white bg-orange-500 rounded p-2 w-32 h-12">Push Button</button>)
+export const Button = ({...props}: { children: string}) => (
+  <button className="ripple text-white bg-green-400 rounded p-2 w-32 h-12">
+    {props.children}
+  </button>)
