@@ -1,4 +1,5 @@
 import React from 'react'
+import './style.css'
 import { Button, LoginForm } from 'ui-component-library'
 import { Card } from 'ui-component-library'
 const App = () => (

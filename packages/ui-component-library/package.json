@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf ./dist",
     "build": "npm run clean && webpack",
-    "start": "webpack --watch"
+    "watch": "webpack --watch"
   },
   "keywords": [],
   "author": "Bernt Anker",
@@ -16,6 +16,7 @@
     "react": "^16.12.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.6",
     "@types/react": "^16.9.19",
     "autoprefixer": "^9.7.4",
     "css-loader": "^3.4.2",

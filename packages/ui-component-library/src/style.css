@@ -1,13 +1,11 @@
-@tailwind base;
+/* purgecss start ignore */
+@tailwind  base;
+@tailwind  components;
+/* purgecss end ignore */
 
-@tailwind components;
-
-@tailwind utilities;
+@tailwind  utilities;
 
 
-button {
-  outline: none !important;
-}
 
 .ripple {
   background-position: center;

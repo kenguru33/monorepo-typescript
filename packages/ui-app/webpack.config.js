@@ -1,8 +1,33 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const buildOpts =
+  process.env.NODE_ENV === 'production'
+    ? { mode: 'production', devtool: false }
+    : { mode: 'development', devtool: 'inline-source-map' }
+
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
+  mode: buildOpts.mode,
+  devtool: buildOpts.devtool,
+  devServer: {
+    stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: true,
+      assets: true,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: true,
+      errorDetails: false,
+      warnings: false,
+      publicPath: false,
+      progress: true,
+      inline: true
+    }
+   },
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
