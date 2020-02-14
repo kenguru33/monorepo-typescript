@@ -5,7 +5,7 @@ import { Card } from 'ui-component-library'
 const App = () => (
   <div className="container mx-auto">
     <div className="p-4">
-      <Card className="bg-gray-300"></Card>
+      <Card className="bg-gray-800"></Card>
     </div>
     <div className="p-2">
       <Button>Click Me!</Button>

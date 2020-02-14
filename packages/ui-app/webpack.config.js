@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const chalk = require('chalk')
 const path = require('path')
 const buildOpts =
   process.env.NODE_ENV === 'production'
@@ -8,41 +10,34 @@ const buildOpts =
 module.exports = {
   mode: buildOpts.mode,
   devtool: buildOpts.devtool,
-  devServer: {
-    stats: {
-      colors: true,
-      hash: false,
-      version: false,
-      timings: true,
-      assets: true,
-      chunks: false,
-      modules: false,
-      reasons: false,
-      children: false,
-      source: false,
-      errors: true,
-      errorDetails: false,
-      warnings: false,
-      publicPath: false,
-      progress: true,
-      inline: true
-    }
-   },
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.js',
-    library: '',
+    library: ''
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: './public/index.html'
-  })],
+  stats: true,
+  devServer: {
+    noInfo: true
+  },
   resolve: {
     // also resolve .js as not all package in node_modules have typings installed
     extensions: ['.tsx', '.ts', '.js'],
     // need to resolve root node_modules and local node_modules
     modules: [path.join(__dirname, '../../node_modules'), 'node_modules']
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'public/index.html'
+    }),
+    new ProgressBarPlugin({
+      format:
+        '  build [:bar] ' +
+        chalk.green.bold(':percent') +
+        ' (:elapsed seconds)',
+      clear: false
+    })
+  ],
   module: {
     rules: [
       {
@@ -61,6 +56,9 @@ module.exports = {
             options: {
               importLoaders: 1
             }
+          },
+          {
+            loader: 'postcss-loader'
           }
         ]
       }
