@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, LoginForm } from 'ui-component-library'
 import { Card } from 'ui-component-library'
 import './style.css'
-// @ts-ignore
+
 import MyImage from '../public/img/RS108.jpg';
 
 const App = () => (
