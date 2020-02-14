@@ -18,6 +18,6 @@ module.exports = {
     require('autoprefixer'),
     ...process.env.NODE_ENV === 'production'
       ? [purgecss]
-      : []
+      : [purgecss]
   ]
 }

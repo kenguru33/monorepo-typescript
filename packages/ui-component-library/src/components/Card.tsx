@@ -1,13 +1,13 @@
-import React, {  } from 'react'
+import React from 'react'
 import '../style.css'
 
-export const Card = ({className, ...props}: {className: string}) => {
+export const Card = ({className, imageUrl, ...props}: {className: string, imageUrl: string}) => {
   return (
 
     <div className={`${className} max-w-sm rounded overflow-hidden shadow-lg`}>
       <img
         className="w-full"
-        src=""
+        src={imageUrl}
         alt="Sunset in the mountains"
       />
       <div className="px-6 py-4">
